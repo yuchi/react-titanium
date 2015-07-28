@@ -5,7 +5,7 @@
   "author": "Pier Paolo Ramon <pierpaolo.ramon@smc.it>",
   "main": "index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/babel src --out-dir .",
+    "prepublish": "babel src --out-dir .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,10 +14,20 @@
     "react",
     "renderer"
   ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
   "peerDependencies": {
     "react": "0.14.0-beta1",
     "babel-runtime": "^5.8.9",
     "babelify": "^6.1.3"
   },
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuchi/react-titanium.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuchi/react-titanium/issues"
+  },
+  "homepage": "https://github.com/yuchi/react-titanium"
 }
