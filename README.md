@@ -90,6 +90,8 @@ class App extends Component {
     );
   }
 }
+
+render(<App />);
 ```
 
 Acknowledgements
