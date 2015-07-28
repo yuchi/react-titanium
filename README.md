@@ -1,6 +1,10 @@
 react-titanium
 ==============
 
+<img
+  align="right" width="128" height="128"
+  src="https://raw.githubusercontent.com/yuchi/react-titanium/master/logo.png">
+
 A React custom renderer for [Appcelerator®][appc] [Titanium™ SDK][tisdk].
 
 [appc]: https://www.appcelerator.com/
