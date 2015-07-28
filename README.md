@@ -98,7 +98,7 @@ Acknowledgements
 I was finally able to grok how to implement a custom renderer thanks to
 [Yomguithereal][Yomguithereal]’s fantastic [`react-blessed`](react-blessed).
 
-Go thank him with a follow or a start! :+1:
+Go thank him with a follow or a star! :+1:
 
 [Yomguithereal]: https://github.com/Yomguithereal
 [react-blessed]: https://github.com/Yomguithereal/react-blessed
