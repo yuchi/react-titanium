@@ -1,4 +1,3 @@
-
 import invariant from 'react/lib/invariant';
 
 const { assign } = Object;
