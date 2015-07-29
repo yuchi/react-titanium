@@ -121,6 +121,18 @@ register("list", "Titanium.UI.ListView", {
   factory: props => Titanium.UI.createListView(props)
 });
 
+register("switch", "Titanium.UI.Switch", {
+  factory: props => Titanium.UI.createSwitch(props)
+});
+
+register("optiondialog", "Titanium.UI.OptionDialog", {
+  factory: props => Titanium.UI.OptionDialog(props)
+});
+
+register("slider", "Titanium.UI.Slider", {
+  factory: props => 	Titanium.UI.Slider(props)
+});
+
 register("root", "react.titanium.Root", {
   factory: props => ({
     apiName: "react.titanium.Root",
