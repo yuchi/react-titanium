@@ -132,21 +132,3 @@ register("optiondialog", "Titanium.UI.OptionDialog", {
 register("slider", "Titanium.UI.Slider", {
   factory: props => 	Titanium.UI.Slider(props)
 });
-
-register("root", "react.titanium.Root", {
-  factory: props => ({
-    apiName: "react.titanium.Root",
-
-    children: [],
-
-    add(child) {
-      this.children.push(child);
-    },
-
-    open(props) {
-      for (let child of this.children) {
-        child.open(props);
-      }
-    }
-  })
-});
