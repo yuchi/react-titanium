@@ -42,7 +42,7 @@ Edit your *package.json* file so it looks like this:
 
   // Hook Babel transformation into Titaniumifier
   "titaniumifier": {
-    "transformers": {
+    "transforms": {
       "babelify": {
         "stage": 0,
         "optional": [ "runtime" ]
