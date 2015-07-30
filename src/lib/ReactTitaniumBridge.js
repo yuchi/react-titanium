@@ -98,8 +98,6 @@ export function attachListeners(view, handlers) {
 }
 
 export function updateChildren(view, children) {
-  Ti.API.error(view.apiName, children.length);
-
   view.removeAllChildren();
 
   // NOTE: Sloooooooow...
@@ -120,9 +118,60 @@ register("ios-navigationwindow", "Ti.UI.iOS.NavigationWindow", {
   factory: props => Ti.UI.iOS.createNavigationWindow(props),
 
   create(props, handlers, getChildren) {
+    const children = getChildren();
+
+    invariant(
+      children.every(child => child.apiName === 'Ti.UI.Window'),
+      "Only <window>s can be children of a <ios-navigationwindow>"
+    );
+
     const view = this.factory({
       ...props,
-      window: getChildren()[0]
+      window: children[0]
+    });
+
+    attachListeners(view, handlers);
+
+    return view;
+  }
+});
+
+register("tabgroup", "Ti.UI.TabGroup", {
+  factory: props => Ti.UI.createTabGroup(props),
+
+  create(props, handlers, getChildren) {
+    const children = getChildren();
+
+    invariant(
+      children.every(child => child.apiName === 'Ti.UI.Tab'),
+      "Only <tab>s can be children of a <tabgroup>"
+    );
+
+    const view = this.factory({
+      ...props,
+      tabs: getChildren()
+    });
+
+    attachListeners(view, handlers);
+
+    return view;
+  }
+});
+
+register("tab", "Ti.UI.Tab", {
+  factory: props => Ti.UI.createTab(props),
+
+  create(props, handlers, getChildren) {
+    const children = getChildren();
+
+    invariant(
+      children.every(child => child.apiName === 'Ti.UI.Window'),
+      "Only <window>s can be children of a <tab>"
+    );
+
+    const view = this.factory({
+      ...props,
+      window: children[0]
     });
 
     attachListeners(view, handlers);
