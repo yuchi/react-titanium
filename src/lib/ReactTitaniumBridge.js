@@ -116,8 +116,8 @@ export function updateChildren(view, children) {
 
 // Built-ins
 
-register("ios-navigationwindow", "Titanium.UI.iOS.NavigationWindow", {
-  factory: props => Titanium.UI.iOS.createNavigationWindow(props),
+register("ios-navigationwindow", "Ti.UI.iOS.NavigationWindow", {
+  factory: props => Ti.UI.iOS.createNavigationWindow(props),
 
   create(props, handlers, getChildren) {
     const view = this.factory({
@@ -131,42 +131,42 @@ register("ios-navigationwindow", "Titanium.UI.iOS.NavigationWindow", {
   }
 });
 
-register("window", "Titanium.UI.Window", {
-  factory: props => Titanium.UI.createWindow(props)
+register("window", "Ti.UI.Window", {
+  factory: props => Ti.UI.createWindow(props)
 });
 
-register("view", "Titanium.UI.View", {
-  factory: props => Titanium.UI.createView(props)
+register("view", "Ti.UI.View", {
+  factory: props => Ti.UI.createView(props)
 });
 
-register("button", "Titanium.UI.Button", {
-  factory: props => Titanium.UI.createButton(props)
+register("button", "Ti.UI.Button", {
+  factory: props => Ti.UI.createButton(props)
 });
 
-register("input", "Titanium.UI.TextField", {
-  factory: props => Titanium.UI.createTextField(props)
+register("input", "Ti.UI.TextField", {
+  factory: props => Ti.UI.createTextField(props)
 });
 
-register("textarea", "Titanium.UI.TextArea", {
-  factory: props => Titanium.UI.createTextArea(props)
+register("textarea", "Ti.UI.TextArea", {
+  factory: props => Ti.UI.createTextArea(props)
 });
 
-register("label", "Titanium.UI.Label", {
-  factory: props => Titanium.UI.createLabel(props)
+register("label", "Ti.UI.Label", {
+  factory: props => Ti.UI.createLabel(props)
 });
 
-register("list", "Titanium.UI.ListView", {
-  factory: props => Titanium.UI.createListView(props)
+register("list", "Ti.UI.ListView", {
+  factory: props => Ti.UI.createListView(props)
 });
 
-register("switch", "Titanium.UI.Switch", {
-  factory: props => Titanium.UI.createSwitch(props)
+register("switch", "Ti.UI.Switch", {
+  factory: props => Ti.UI.createSwitch(props)
 });
 
-register("optiondialog", "Titanium.UI.OptionDialog", {
-  factory: props => Titanium.UI.OptionDialog(props)
+register("optiondialog", "Ti.UI.OptionDialog", {
+  factory: props => Ti.UI.OptionDialog(props)
 });
 
-register("slider", "Titanium.UI.Slider", {
-  factory: props => 	Titanium.UI.Slider(props)
+register("slider", "Ti.UI.Slider", {
+  factory: props => 	Ti.UI.Slider(props)
 });
