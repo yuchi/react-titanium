@@ -35,8 +35,47 @@ export function get(type) {
   return registry[ type ];
 }
 
+const defaults = {
+  factory: props => Ti.UI.createView(props),
+
+  create(props, handlers, getChildren) {
+    const view = this.factory(props);
+
+    attachListeners(view, handlers);
+
+    updateChildren(view, getChildren());
+
+    return view;
+  },
+
+  update(view, props, handlers) {
+    // TODO: manage handlers
+
+    for (let key in props) {
+      let nextValue = props[key];
+
+      if (key === 'value') {
+        let oldValue = view[key];
+
+        if (nextValue === oldValue) {
+          continue;
+        }
+      }
+
+      view[key] = nextValue;
+    }
+
+    // view.applyProperties(props);
+  }
+};
+
 export function register(shortName, apiName, config = {}) {
-  const definition = { shortName, apiName, ...config };
+  const definition = {
+    ...defaults,
+    shortName,
+    apiName,
+    ...config
+  };
 
   registry[ shortName ] = definition;
   registry[ apiName ] = definition;
@@ -44,39 +83,23 @@ export function register(shortName, apiName, config = {}) {
   return definition;
 }
 
-export function create(type, props, handlers) {
-  const definition = get(type);
+export function create(type, props, handlers, getChildren) {
+  return get(type).create(props, handlers, getChildren);
+}
 
-  const view = definition.factory(props);
+export function update(type, view, props, handlers) {
+  return get(type).update(view, props, handlers);
+}
 
+export function attachListeners(view, handlers) {
   for (let name in handlers) {
     view.addEventListener(name, handlers[ name ]);
   }
-
-  return view;
-}
-
-export function update(view, props, handlers) {
-  // TODO: manage handlers
-
-  for (let key in props) {
-    let nextValue = props[key];
-
-    if (key === 'value') {
-      let oldValue = view[key];
-
-      if (nextValue === oldValue) {
-        continue;
-      }
-    }
-
-    view[key] = nextValue;
-  }
-
-  // view.applyProperties(props);
 }
 
 export function updateChildren(view, children) {
+  Ti.API.error(view.apiName, children.length);
+
   view.removeAllChildren();
 
   // NOTE: Sloooooooow...
@@ -92,6 +115,21 @@ export function updateChildren(view, children) {
 }
 
 // Built-ins
+
+register("ios-navigationwindow", "Titanium.UI.iOS.NavigationWindow", {
+  factory: props => Titanium.UI.iOS.createNavigationWindow(props),
+
+  create(props, handlers, getChildren) {
+    const view = this.factory({
+      ...props,
+      window: getChildren()[0]
+    });
+
+    attachListeners(view, handlers);
+
+    return view;
+  }
+});
 
 register("window", "Titanium.UI.Window", {
   factory: props => Titanium.UI.createWindow(props)

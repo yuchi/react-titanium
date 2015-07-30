@@ -30,34 +30,29 @@ export default class ReactTitaniumComponent {
 
     const { handlers, rest } = ReactTitaniumBridge.extractHandlers(options);
 
-    const view = ReactTitaniumBridge.create(type, rest, handlers);
+    const getChildren = () => {
+      return this
+        .mountChildren(children, transaction, context)
+        .map(component => component._titaniumView )
+    };
+
+    const view = ReactTitaniumBridge.create(type, rest, handlers, getChildren);
 
     this._titaniumView = view;
 
     ReactTitaniumIDOperations.store(this._rootNodeID, this._titaniumView);
 
-    const childrenToAdd = this.mountChildren(
-      children,
-      transaction,
-      context
-    );
-
-    ReactTitaniumBridge.updateChildren(
-      view,
-      childrenToAdd.map(component => component._titaniumView)
-    );
-
     return this;
   }
 
   receiveComponent(nextElement, transaction, context) {
-    const { props: {children, ...options } } = nextElement;
+    const { type, props: {children, ...options } } = nextElement;
 
     const { handlers, rest } = ReactTitaniumBridge.extractHandlers(options);
 
     const view = this._titaniumView;
 
-    ReactTitaniumBridge.update(view, rest, handlers);
+    ReactTitaniumBridge.update(type, view, rest, handlers);
 
     const childrenToUse = [].concat(children || []).filter(Boolean);
 
