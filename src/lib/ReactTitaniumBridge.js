@@ -149,7 +149,7 @@ register("tabgroup", "Ti.UI.TabGroup", {
 
     const view = this.factory({
       ...props,
-      tabs: getChildren()
+      tabs: children
     });
 
     attachListeners(view, handlers);
