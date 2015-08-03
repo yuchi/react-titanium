@@ -25,7 +25,7 @@ const customs = words`
   Ti.UI.iOS.NavigationWindow
   Ti.UI.iOS.SplitWindow
   Ti.UI.iOS.Toolbar
-  Ti.UI.List
+  Ti.UI.ListView
   Ti.UI.ListSection
   Ti.UI.MobileWeb.NavigationGroup
   Ti.UI.Picker
@@ -72,6 +72,18 @@ const tagnames = {
 
 const buildDir = resolve(__dirname, '..', 'src', 'lib', 'built-ins');
 
+// Factories
+
+const simpleView = (tagname, apiName) => `
+import { register } from '../ReactTitaniumBridge';
+
+register('${tagname}', '${apiName}', {
+  factory: props => ${getFactory(apiName)}(props)
+});
+`;
+
+// Script
+
 createReadStream(require.resolve('./api'))
   .pipe(parse('*', ({ name, type, deprecated, ...rest }) => {
     const apiName = name.replace('Titanium', 'Ti');
@@ -102,26 +114,11 @@ createReadStream(require.resolve('./api'))
     }
     else {
       console.log(highlight(chalk.green)`<${tagname} /> builds a ${apiName}`);
-      buildSimpleView(tagname, apiName);
+      write(tagname, simpleView(tagname, apiName));
     }
   }));
 
-// Factories
-
-function buildSimpleView(tagname, apiName) {
-  const [ classname, ...rest ] = apiName.split('.').reverse();
-  const namespace = rest.reverse().join('.');
-
-  const factory = `${namespace}.create${classname}`;
-
-  write(tagname, `
-import { register } from '../ReactTitaniumBridge';
-
-register('${tagname}', '${apiName}', {
-  factory: props => ${factory}(props)
-});
-`);
-}
+// Utils
 
 function write(tagname, source) {
   source = source.trim() + '\n';
@@ -129,11 +126,16 @@ function write(tagname, source) {
   writeFileSync(resolve(buildDir, tagname + '.js'), source);
 }
 
+function getFactory(apiName) {
+  const [ classname, ...rest ] = apiName.split('.').reverse();
+  const namespace = rest.reverse().join('.');
+
+  return `${namespace}.create${classname}`;
+}
+
 function getTagName(tagname) {
   return tagnames[tagname] || tagname;
 }
-
-// Utils
 
 function highlight(fn){
   return ([ first, ...rest ], ...values) =>
