@@ -28,9 +28,7 @@ const customs = words`
   Ti.UI.ListView
   Ti.UI.ListSection
   Ti.UI.MobileWeb.NavigationGroup
-  Ti.UI.Picker
   Ti.UI.PickerColumn
-  Ti.UI.PickerRow
   Ti.UI.ScrollableView
   Ti.UI.Tab
   Ti.UI.TabGroup
@@ -110,7 +108,13 @@ createReadStream(require.resolve('./api'))
       console.log(highlight(chalk.red)`I don’t know what should I do with ${apiName}`)
     }
     else if (customs::contains(apiName)) {
-      console.log(highlight(chalk.red)`I should check if ${apiName} is implemented`);
+      try {
+        require.resolve(getFilename(tagname));
+        console.log(highlight(chalk.green)`<${tagname} /> builds a ${apiName}`);
+      }
+      catch (e) {
+        console.log(highlight(chalk.red)`There’s no way to use <${tagname} /> to build a ${apiName}`);
+      }
     }
     else {
       console.log(highlight(chalk.green)`<${tagname} /> builds a ${apiName}`);
@@ -123,7 +127,11 @@ createReadStream(require.resolve('./api'))
 function write(tagname, source) {
   source = source.trim() + '\n';
 
-  writeFileSync(resolve(buildDir, tagname + '.js'), source);
+  writeFileSync(getFilename(tagname), source);
+}
+
+function getFilename(tagname) {
+  return resolve(buildDir, tagname + '.js');
 }
 
 function getFactory(apiName) {
