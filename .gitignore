@@ -4,3 +4,4 @@ node_modules
 /babel-plugin
 /index.js
 /lib
+/scripts/api.json
