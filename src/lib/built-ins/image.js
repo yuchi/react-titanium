@@ -1,5 +1,5 @@
 import { register } from '../ReactTitaniumBridge';
 
-register('imageview', 'Ti.UI.ImageView', {
+register('image', 'Ti.UI.ImageView', {
   factory: props => Ti.UI.createImageView(props)
 });

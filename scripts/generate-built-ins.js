@@ -25,6 +25,7 @@ const customs = words`
   Ti.UI.iOS.NavigationWindow
   Ti.UI.iOS.SplitWindow
   Ti.UI.iOS.Toolbar
+  Ti.UI.List
   Ti.UI.ListSection
   Ti.UI.MobileWeb.NavigationGroup
   Ti.UI.Picker
@@ -56,6 +57,19 @@ const fake = words`
   Ti.UI.View
 `;
 
+// Tagnames to be renamed
+const tagnames = {
+  //'android-searchview': 'android-search',
+  'imageview': 'image',
+  'listview': 'list',
+  'scrollview': 'scroll',
+  'scrollableview': 'scrollable',
+  'tableview': 'table',
+  //'webview': 'web',
+  'ios-adview': 'ios-ad',
+  'ios-coverflowview': 'ios-coverflow',
+};
+
 const buildDir = resolve(__dirname, '..', 'src', 'lib', 'built-ins');
 
 createReadStream(require.resolve('./api'))
@@ -69,7 +83,7 @@ createReadStream(require.resolve('./api'))
 
     const [ shortName, platform ] = apiName.toLowerCase().split('.').slice(2).reverse();
 
-    const tagname = platform ? `${platform}-${shortName}` : shortName;
+    const tagname = getTagName(platform ? `${platform}-${shortName}` : shortName);
 
     if (apiName::endsWith('Style')) {
       console.log(highlight(chalk.blue)`I should do something with constants from ${apiName}`);
@@ -113,6 +127,10 @@ function write(tagname, source) {
   source = source.trim() + '\n';
 
   writeFileSync(resolve(buildDir, tagname + '.js'), source);
+}
+
+function getTagName(tagname) {
+  return tagnames[tagname] || tagname;
 }
 
 // Utils
