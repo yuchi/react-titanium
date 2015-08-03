@@ -2,7 +2,7 @@ import invariant from 'react/lib/invariant';
 import { register, attachListeners } from '../ReactTitaniumBridge';
 
 register("tabgroup", "Ti.UI.TabGroup", {
-  factory: props => Ti.UI.createTabGroup(props),
+  factory: props => Ti.UI.createPickerColumn(props),
 
   create(props, handlers, getChildren) {
     const children = getChildren();

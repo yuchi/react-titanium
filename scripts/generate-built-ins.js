@@ -25,6 +25,7 @@ const customs = words`
   Ti.UI.iOS.NavigationWindow
   Ti.UI.iOS.SplitWindow
   Ti.UI.iOS.Toolbar
+  Ti.UI.iPad.Popover
   Ti.UI.ListView
   Ti.UI.ListSection
   Ti.UI.MobileWeb.NavigationGroup
