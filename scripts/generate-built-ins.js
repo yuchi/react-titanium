@@ -72,13 +72,13 @@ createReadStream(require.resolve('./api'))
     const tagname = platform ? `${platform}-${shortName}` : shortName;
 
     if (apiName::endsWith('Style')) {
-      console.log(highlight(chalk.red)`I should do something with constants from ${apiName}`);
+      console.log(highlight(chalk.blue)`I should do something with constants from ${apiName}`);
     }
     else if (apiName::endsWith('Behavior')) {
-      console.log(highlight(chalk.red)`I should do something with the behavior ${apiName}`);
+      console.log(highlight(chalk.blue)`I should do something with the behavior ${apiName}`);
     }
     else if (apiName::endsWith('Dialog')) {
-      console.log(highlight(chalk.red)`I should do something with the dialog ${apiName}`)
+      console.log(highlight(chalk.yellow)`I should do something with the dialog ${apiName}`)
     }
     else if ((rest.extends === 'Titanium.Proxy') && !fake::contains(apiName)) {
       console.log(highlight(chalk.red)`I don’t know what should I do with ${apiName}`)
@@ -87,7 +87,7 @@ createReadStream(require.resolve('./api'))
       console.log(highlight(chalk.red)`I should check if ${apiName} is implemented`);
     }
     else {
-      console.log(highlight(chalk.blue)`<${tagname} /> builds a ${apiName}`);
+      console.log(highlight(chalk.green)`<${tagname} /> builds a ${apiName}`);
       buildSimpleView(tagname, apiName);
     }
   }));
