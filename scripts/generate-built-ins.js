@@ -105,7 +105,7 @@ createReadStream(require.resolve('./api'))
       console.log(highlight(chalk.yellow)`I should do something with the dialog ${apiName}`)
     }
     else if ((rest.extends === 'Titanium.Proxy') && !fake::contains(apiName)) {
-      console.log(highlight(chalk.red)`I don’t know what should I do with ${apiName}`)
+      console.log(highlight(chalk.magenta)`I don’t know what should I do with ${apiName}`)
     }
     else if (customs::contains(apiName)) {
       try {
