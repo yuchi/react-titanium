@@ -46,7 +46,7 @@ Edit your *package.json* file so it looks like this:
       "babelify": {
         "stage": 0,
         "optional": [ "runtime" ],
-        "plugins": [ "react-titanium/babel-plugin:before" ]
+        "plugins": [ "react-titanium/lib/babel-plugin:before" ]
       }
     }
   }

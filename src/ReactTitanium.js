@@ -4,7 +4,7 @@ import ReactUpdates from 'react/lib/ReactUpdates';
 import invariant from 'react/lib/invariant';
 import instantiateReactComponent from 'react/lib/instantiateReactComponent';
 
-import inject from './lib/ReactTitaniumInjection';
+import inject from './ReactTitaniumInjection';
 
 inject();
 

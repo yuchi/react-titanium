@@ -4,7 +4,7 @@ const cache = {};
 function isBuiltIn(name) {
   if (!(name in cache)) {
     try {
-      require.resolve(`../lib/built-ins/${name}`);
+      require.resolve(`../built-ins/${name}`);
       cache[name] = true;
     }
     catch (ex) {

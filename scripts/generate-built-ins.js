@@ -69,7 +69,7 @@ const tagnames = {
   'ios-coverflowview': 'ios-coverflow',
 };
 
-const buildDir = resolve(__dirname, '..', 'src', 'lib', 'built-ins');
+const buildDir = resolve(__dirname, '..', 'src', 'built-ins');
 
 // Factories
 
