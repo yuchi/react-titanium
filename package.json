@@ -5,8 +5,9 @@
   "author": "Pier Paolo Ramon <pierpaolo.ramon@smc.it>",
   "main": "index.js",
   "scripts": {
-    "prepublish": "node_modules/.bin/babel src --out-dir lib",
+    "compile": "node_modules/.bin/babel src --out-dir lib",
     "generate-built-ins": "node_modules/.bin/babel-node scripts/generate-built-ins",
+    "prepublish": "npm run generate-built-ins && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
