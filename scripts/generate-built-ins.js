@@ -85,7 +85,7 @@ register('${tagname}', '${apiName}', {
 
 // Script
 
-createReadStream(require.resolve('./api'))
+createReadStream(resolve(__dirname, './api.json'))
   .pipe(parse('*', ({ name, type, deprecated, ...rest }) => {
     const apiName = name.replace('Titanium', 'Ti');
 
