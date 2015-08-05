@@ -95,6 +95,40 @@ class App extends Component {
 render(<App />);
 ```
 
+Building and Development
+------------------------
+
+### Setup
+
+```bash
+$ git clone git@github.com:yuchi/react-titanium.git
+$ cd react-titanium
+$ npm install
+```
+
+### Compiling (ES2015 to ES5)
+
+```bash
+$ npm run compile
+```
+
+### Testing (temporary solution)
+
+```bash
+$ cd Titanium_Workspace
+$ titanium create # Follow the instructions to create an app
+$ cd MyApp
+$ npm init
+$ npm install --save-dev titaniumifier
+$ node_modules/.bin/install-titaniumifier-plugin
+$ node_modules/.bin/install-titaniumifier-plugin --no-simulate
+$ npm install --save-dev babelify babel-runtime # Edit the package.json!!
+$ npm install --save react@0.14.0-beta1
+$ ln -s /path/to/my/react-titanium node_modules/react-titanium
+# Then compile and...
+$ titanium build --platform ios # ...have fun!
+```
+
 Acknowledgements
 ----------------
 
