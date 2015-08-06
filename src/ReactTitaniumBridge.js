@@ -1,4 +1,4 @@
-import invariant from 'react/lib/invariant';
+import invariant from 'invariant';
 
 const { assign } = Object;
 

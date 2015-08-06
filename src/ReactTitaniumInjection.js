@@ -1,8 +1,8 @@
-import ReactInjection from 'react/lib/ReactInjection';
 import ReactComponentEnvironment from 'react/lib/ReactComponentEnvironment';
+import ReactInjection from 'react/lib/ReactInjection';
 
-import ReactTitaniumReconcileTransaction from './ReactTitaniumReconcileTransaction';
 import ReactTitaniumComponent from './ReactTitaniumComponent';
+import ReactTitaniumReconcileTransaction from './ReactTitaniumReconcileTransaction';
 import * as ReactTitaniumIDOperations from './ReactTitaniumIDOperations';
 //import ReactTitaniumTextComponent from './text';
 

@@ -17,7 +17,9 @@
     "renderer"
   ],
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "invariant": "^2.1.0"
+  },
   "devDependencies": {
     "JSONStream": "^1.0.4",
     "babel": "^5.8.20",
