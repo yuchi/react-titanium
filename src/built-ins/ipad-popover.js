@@ -1,4 +1,5 @@
-import invariant from 'react/lib/invariant';
+import invariant from 'invariant';
+
 import { register, attachListeners } from '../ReactTitaniumBridge';
 
 register("ipad-popover", "Ti.UI.iPad.Popover", {
