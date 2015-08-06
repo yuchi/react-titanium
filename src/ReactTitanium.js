@@ -8,6 +8,8 @@ import inject from './ReactTitaniumInjection';
 
 inject();
 
+export { register as registerElement } from './ReactTitaniumBrdidge';
+
 export function render(element) {
   invariant(
     ReactElement.isValidElement(element),
