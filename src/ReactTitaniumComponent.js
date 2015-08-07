@@ -33,7 +33,7 @@ export default class ReactTitaniumComponent {
     const getChildren = () => {
       return this
         .mountChildren(children, transaction, context)
-        .map(component => component._titaniumView )
+        .map(component => component._titaniumView)
     };
 
     const view = ReactTitaniumBridge.create(type, rest, handlers, getChildren);
