@@ -19,7 +19,7 @@ export default function inject() {
     ReactTitaniumReconcileTransaction
   );
 
-  // NOTE: very dirty trick due to react@0.14-beta1's current state
+  // NOTE: very dirty trick due to react@0.14-beta3's current state
   // NOTE: should be `ReactInjection.Component.injectEnvironment({ ... })`
   ReactComponentEnvironment.processChildrenUpdates =
     ReactTitaniumIDOperations.dangerouslyProcessChildrenUpdates;

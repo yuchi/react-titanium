@@ -11,7 +11,7 @@ A React custom renderer for [Appcelerator®][appc] [Titanium™ SDK][tisdk].
 [tisdk]: http://www.appcelerator.org/#titanium
 
 This renderer should currently be considered as experimental and subject to
-change since it works on a beta version of React (`0.14.0-beta1`).
+change since it works on a beta version of React (`0.14.0-beta3`).
 
 Installation
 ------------
@@ -28,7 +28,7 @@ $ node_modules/.bin/install-titaniumifier-plugin
 $ node_modules/.bin/install-titaniumifier-plugin --no-simulate
 
 # React-titanium requires v0.14
-$ npm install --save react@0.14.0-beta1 react-titanium
+$ npm install --save react@0.14.0-beta3 react-titanium
 # Let’s write in ES2015!
 $ npm install --save-dev babelify babel-runtime
 ```
@@ -123,7 +123,7 @@ $ npm install --save-dev titaniumifier
 $ node_modules/.bin/install-titaniumifier-plugin
 $ node_modules/.bin/install-titaniumifier-plugin --no-simulate
 $ npm install --save-dev babelify babel-runtime # Edit the package.json!!
-$ npm install --save react@0.14.0-beta1
+$ npm install --save react@0.14.0-beta3
 $ ln -s /path/to/my/react-titanium node_modules/react-titanium
 # Then compile and...
 $ titanium build --platform ios # ...have fun!
