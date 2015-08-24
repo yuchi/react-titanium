@@ -2,9 +2,9 @@ import ReactComponentEnvironment from 'react/lib/ReactComponentEnvironment';
 import ReactInjection from 'react/lib/ReactInjection';
 
 import ReactTitaniumComponent from './ReactTitaniumComponent';
+//import ReactTitaniumTextComponent from './ReactTitaniumTextComponent';
 import ReactTitaniumReconcileTransaction from './ReactTitaniumReconcileTransaction';
 import * as ReactTitaniumIDOperations from './ReactTitaniumIDOperations';
-//import ReactTitaniumTextComponent from './text';
 
 export default function inject() {
   ReactInjection.NativeComponent.injectGenericComponentClass(
@@ -12,7 +12,7 @@ export default function inject() {
   );
 
   //ReactInjection.NativeComponent.injectTextComponentClass(
-  //  ReactiTextComponent
+  //  ReactTitaniumTextComponent
   //);
 
   ReactInjection.Updates.injectReconcileTransaction(
