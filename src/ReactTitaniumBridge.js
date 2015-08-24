@@ -1,3 +1,4 @@
+import OS_IOS from 'titanium-platforms/os/ios';
 import invariant from 'invariant';
 
 const { assign } = Object;
@@ -100,16 +101,21 @@ export function attachListeners(view, handlers) {
 }
 
 export function updateChildren(view, children) {
-  view.removeAllChildren();
+  if (OS_IOS) {
+    view.add(children);
+  }
+  else {
+    view.removeAllChildren();
 
-  // NOTE: Sloooooooow...
+    // NOTE: Sloooooooow...
 
-  let i = 0;
-  let l = children.length;
+    let i = 0;
+    let l = children.length;
 
-  for (; i < l; ++i) {
-    if (children[i]) {
-      view.add(children[i]);
+    for (; i < l; ++i) {
+      if (children[i]) {
+        view.add(children[i]);
+      }
     }
   }
 }

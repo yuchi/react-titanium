@@ -1,3 +1,5 @@
+import OS_ANDROID from 'titanium-platforms/os/android';
+import OS_IOS from 'titanium-platforms/os/ios';
 import ReactMultiChildUpdateTypes from 'react/lib/ReactMultiChildUpdateTypes';
 
 import * as ReactTitaniumBridge from './ReactTitaniumBridge';
@@ -11,14 +13,22 @@ export const actions = {
     const view = component.getPublicInstance();
     const parent = update.parentNode;
 
-    const children = parent.children.slice(0);
+    if (OS_IOS) {
+      parent.add({ view, position: update.toIndex });
+    }
+    else if (OS_ANDROID) {
+      parent.insertAt({ view, position: update.toIndex });
+    }
+    else {
+      const children = parent.children.slice(0);
 
-    const nextChildren = []
-      .concat(children.slice(0, update.toIndex))
-      .concat(view)
-      .concat(children.slice(update.toIndex));
+      const nextChildren = []
+        .concat(children.slice(0, update.toIndex))
+        .concat(view)
+        .concat(children.slice(update.toIndex));
 
-    ReactTitaniumBridge.updateChildren(parent, nextChildren);
+      ReactTitaniumBridge.updateChildren(parent, nextChildren);
+    }
   },
 
   [REMOVE_NODE](update, components) {

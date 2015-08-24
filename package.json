@@ -18,7 +18,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "invariant": "^2.1.0"
+    "invariant": "^2.1.0",
+    "titanium-platforms": "^1.0.0"
   },
   "devDependencies": {
     "JSONStream": "^1.0.4",
