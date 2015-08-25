@@ -1,4 +1,7 @@
-import { processChildrenUpdates } from './ReactTitaniumChildrenOperations';
+import {
+  processChildrenUpdates,
+  replaceNode
+} from './ReactTitaniumChildrenOperations';
 
 const cache = new Map();
 
@@ -20,4 +23,10 @@ export function dangerouslyProcessChildrenUpdates(updates, components) {
   }
 
   processChildrenUpdates(updates, components);
+}
+
+export function dangerouslyReplaceNodeWithMarkupByID(id, markup) {
+  const node = retrieve(id);
+
+  replaceNode(node, markup);
 }

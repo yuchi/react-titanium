@@ -23,4 +23,6 @@ export default function inject() {
   // NOTE: should be `ReactInjection.Component.injectEnvironment({ ... })`
   ReactComponentEnvironment.processChildrenUpdates =
     ReactTitaniumIDOperations.dangerouslyProcessChildrenUpdates;
+  ReactComponentEnvironment.replaceNodeWithMarkupByID =
+    ReactTitaniumIDOperations.dangerouslyReplaceNodeWithMarkupByID;
 }

@@ -47,3 +47,14 @@ export function processChildrenUpdates(updates, components) {
     actions[update.type](update, components);
   }
 }
+
+export function replaceNode(prevNode, component) {
+  // FIXME Need to understand when does this happen
+  const nextNode = component.getPublicInstance();
+  const parentNode = prevNode.parent;
+
+  if (parentNode) {
+    parentNode.remove(prevNode);
+    parentNode.add(nextNode);
+  }
+}
