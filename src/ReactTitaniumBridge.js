@@ -1,5 +1,6 @@
-import OS_IOS from 'titanium-platforms/os/ios';
 import invariant from 'invariant';
+import OS_IOS from 'titanium-platforms/os/ios';
+import ReactChildren from 'react/lib/ReactChildren';
 
 const { assign } = Object;
 
@@ -23,6 +24,54 @@ export function extractHandlers(props) {
   }
 
   return { handlers, rest };
+}
+
+const separateChildren = (obj, fn) => {
+  const results = {};
+
+  ReactChildren.map(obj, child => {
+    const group = fn(child);
+
+    if (group != null) {
+      if (group in results) {
+        results[group].push(child);
+      }
+      else {
+        results[group] = [child];
+      }
+    }
+  });
+
+  return results;
+};
+
+const CONTENT_TYPES = {
+  string: true, number: true
+};
+
+const isTextElement = element => CONTENT_TYPES[ typeof element ];
+
+export function discernTextChildren(children, isText) {
+  return separateChildren(
+    children,
+    child => isTextElement(child) ? 'texts' : 'nodes'
+  );
+}
+
+export function mutatePropsForText(type, props, texts) {
+  if (!texts) {
+    return props;
+  }
+
+  const key = get(type).textProperty;
+
+  if (!key) {
+    return props;
+  }
+
+  props[key] = texts.join('');
+
+  return props;
 }
 
 // Definitions

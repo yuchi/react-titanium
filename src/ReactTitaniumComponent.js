@@ -26,13 +26,17 @@ export default class ReactTitaniumComponent {
   mountComponent(rootID, transaction, context) {
     this._rootNodeID = rootID;
 
-    const { type, props: { children, ...options } } = this._currentElement;
+    const { type, props: { children, ...props } } = this._currentElement;
 
-    const { handlers, rest } = ReactTitaniumBridge.extractHandlers(options);
+    const { handlers, rest } = ReactTitaniumBridge.extractHandlers(props);
+
+    const { nodes, texts } = ReactTitaniumBridge.discernTextChildren(children);
+
+    ReactTitaniumBridge.mutatePropsForText(type, rest, texts);
 
     const getChildren = () => {
       return this
-        .mountChildren(children, transaction, context)
+        .mountChildren(nodes, transaction, context)
         .map(component => component._titaniumView)
     };
 
@@ -46,17 +50,19 @@ export default class ReactTitaniumComponent {
   }
 
   receiveComponent(nextElement, transaction, context) {
-    const { type, props: {children, ...options } } = nextElement;
+    const { type, props: { children, ...props } } = nextElement;
 
-    const { handlers, rest } = ReactTitaniumBridge.extractHandlers(options);
+    const { handlers, rest } = ReactTitaniumBridge.extractHandlers(props);
+
+    const { nodes, texts } = ReactTitaniumBridge.discernTextChildren(children);
+
+    ReactTitaniumBridge.mutatePropsForText(type, rest, texts);
 
     const view = this._titaniumView;
 
     ReactTitaniumBridge.update(type, view, rest, handlers);
 
-    const childrenToUse = [].concat(children || []).filter(Boolean);
-
-    this.updateChildren(childrenToUse, transaction, context);
+    this.updateChildren(nodes, transaction, context);
 
     return this;
   }
