@@ -34,6 +34,17 @@ export default class ReactTitaniumComponent {
 
     ReactTitaniumBridge.mutatePropsForTextChildren(type, rest, texts);
 
+    if ((type === 'template') || context.templateRendering) {
+      return this.mountTemplate(
+        type,
+        rest,
+        handlers,
+        nodes,
+        transaction,
+        context
+      );
+    }
+
     const getChildren = () => {
       return this
         .mountChildren(nodes, transaction, context)
@@ -49,6 +60,27 @@ export default class ReactTitaniumComponent {
     return this;
   }
 
+  mountTemplate(type, props, handlers, nodes, transaction, context) {
+    context = {
+      ...context,
+      templateRendering: true
+    };
+
+    const template = {
+      type: ReactTitaniumBridge.getApiName(type),
+      bindId: props.bindId,
+      properties: props,
+      events: handlers,
+      childTemplates: this
+        .mountChildren(nodes, transaction, context)
+        .map(component => component._titaniumView)
+    };
+
+    this._titaniumView = template;
+
+    return this;
+  }
+
   receiveComponent(nextElement, transaction, context) {
     const { type, props: { children, ...props } } = nextElement;
 
@@ -59,6 +91,10 @@ export default class ReactTitaniumComponent {
     ReactTitaniumBridge.mutatePropsForTextChildren(type, rest, texts);
 
     const view = this._titaniumView;
+
+    if ((type === 'template') || context.templateRendering) {
+      return this;
+    }
 
     ReactTitaniumBridge.update(type, view, rest, handlers);
 

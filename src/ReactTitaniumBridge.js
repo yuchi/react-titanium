@@ -23,6 +23,11 @@ export function get(type) {
   return registry[ type ];
 }
 
+export function getApiName(type) {
+  if (type in registry) return registry[ type ].apiName;
+  else return type;
+}
+
 const defaults = {
   factory: props => Ti.UI.createView(props),
 
