@@ -1,78 +1,14 @@
 import invariant from 'invariant';
 import OS_IOS from 'titanium-platforms/os/ios';
-import ReactChildren from 'react/lib/ReactChildren';
 
 const { assign } = Object;
 
 // Utilities
 
-const handlerRE = /^on[A-Z]/g;
-
-export function extractHandlers(props) {
-  const handlers = {};
-  const rest = {};
-
-  for (let key of Object.keys(props)) {
-    const value = props[ key ];
-
-    if ((typeof value === 'function') && key.match(handlerRE)) {
-      handlers[ key.slice(2, 3).toLowerCase() + key.slice(3) ] = value;
-    }
-    else {
-      rest[ key ] = value;
-    }
-  }
-
-  return { handlers, rest };
-}
-
-const separateChildren = (obj, fn) => {
-  const results = {};
-
-  ReactChildren.map(obj, child => {
-    const group = fn(child);
-
-    if (group != null) {
-      if (group in results) {
-        results[group].push(child);
-      }
-      else {
-        results[group] = [child];
-      }
-    }
-  });
-
-  return results;
-};
-
-const CONTENT_TYPES = {
-  string: true, number: true
-};
-
-const isTextElement = element => CONTENT_TYPES[ typeof element ];
-
-export function discernTextChildren(children, isText) {
-  return separateChildren(
-    children,
-    child => isTextElement(child) ? 'texts' : 'nodes'
-  );
-}
-
-export function mutatePropsForText(type, props, texts) {
-  if (!texts) {
-    return props;
-  }
-
-  const key = get(type).textProperty;
-
-  if (!key) {
-    return props;
-  }
-
-  props[key] = texts.join('');
-
-  return props;
-}
+export discernTextChildren from './utils/discernTextChildren';
+export extractHandlers from './utils/extractHandlers';
+export mutatePropsForTextChildren from './utils/mutatePropsForTextChildren';
+export separateChildren from './utils/separateChildren';
 
 // Definitions
 

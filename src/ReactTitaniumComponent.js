@@ -32,7 +32,7 @@ export default class ReactTitaniumComponent {
 
     const { nodes, texts } = ReactTitaniumBridge.discernTextChildren(children);
 
-    ReactTitaniumBridge.mutatePropsForText(type, rest, texts);
+    ReactTitaniumBridge.mutatePropsForTextChildren(type, rest, texts);
 
     const getChildren = () => {
       return this
@@ -56,7 +56,7 @@ export default class ReactTitaniumComponent {
 
     const { nodes, texts } = ReactTitaniumBridge.discernTextChildren(children);
 
-    ReactTitaniumBridge.mutatePropsForText(type, rest, texts);
+    ReactTitaniumBridge.mutatePropsForTextChildren(type, rest, texts);
 
     const view = this._titaniumView;
 
