@@ -23,7 +23,11 @@ register('list', 'Ti.UI.ListView', {
     const view = this.factory({
       ...props,
       sections,
-      templates: indexBy(templates, template => template.properties.name)
+      templates: {
+        // templates passed as child elements overwrite those passed as props
+        ...props.templates,
+        ...indexBy(templates, template => template.properties.name)
+      }
     });
 
     attachListeners(view, handlers);
