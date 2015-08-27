@@ -86,7 +86,9 @@ class App extends Component {
         onClick={ this.increment }
         ref={ this.open }
       >
-        <label color="#09f" text={ this.state.counter } />
+        <label color="#09f">
+          We got to: { this.state.counter }
+        </label>
       </window>
     );
   }
