@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('picker', 'Ti.UI.Picker', {
+  textProperty: undefined,
   factory: props => Ti.UI.createPicker(props)
 });

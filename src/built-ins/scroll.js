@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('scroll', 'Ti.UI.ScrollView', {
+  textProperty: undefined,
   factory: props => Ti.UI.createScrollView(props)
 });

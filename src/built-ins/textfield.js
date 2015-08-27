@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('textfield', 'Ti.UI.TextField', {
+  textProperty: undefined,
   factory: props => Ti.UI.createTextField(props)
 });

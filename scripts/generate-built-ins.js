@@ -17,6 +17,7 @@
 
 import { createReadStream, writeFileSync } from 'fs';
 import { resolve } from 'path';
+import { inspect } from 'util';
 import { parse } from 'JSONStream';
 import chalk from 'chalk';
 
@@ -69,6 +70,12 @@ const tagnames = {
   'ios-coverflowview': 'ios-coverflow',
 };
 
+// Views that support the <view>text</view> form, and for which property
+const textProperties = {
+  'Ti.UI.Label': 'text',
+  'Ti.UI.Button': 'title'
+};
+
 const buildDir = resolve(__dirname, '..', 'src', 'built-ins');
 
 // Factories
@@ -78,7 +85,8 @@ const simpleView = (tagname, apiName) => `
 
 import { register } from '../ReactTitaniumBridge';
 
-register('${tagname}', '${apiName}', {
+register(${inspect(tagname)}, ${inspect(apiName)}, {
+  textProperty: ${inspect(textProperties[apiName])},
   factory: props => ${getFactory(apiName)}(props)
 });
 `;

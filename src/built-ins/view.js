@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('view', 'Ti.UI.View', {
+  textProperty: undefined,
   factory: props => Ti.UI.createView(props)
 });

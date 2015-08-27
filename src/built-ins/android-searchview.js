@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('android-searchview', 'Ti.UI.Android.SearchView', {
+  textProperty: undefined,
   factory: props => Ti.UI.Android.createSearchView(props)
 });

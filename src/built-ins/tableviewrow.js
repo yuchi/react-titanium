@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('tableviewrow', 'Ti.UI.TableViewRow', {
+  textProperty: undefined,
   factory: props => Ti.UI.createTableViewRow(props)
 });

@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('ios-tabbedbar', 'Ti.UI.iOS.TabbedBar', {
+  textProperty: undefined,
   factory: props => Ti.UI.iOS.createTabbedBar(props)
 });

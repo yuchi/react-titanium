@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('button', 'Ti.UI.Button', {
+  textProperty: 'title',
   factory: props => Ti.UI.createButton(props)
 });

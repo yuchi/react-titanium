@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('webview', 'Ti.UI.WebView', {
+  textProperty: undefined,
   factory: props => Ti.UI.createWebView(props)
 });

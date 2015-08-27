@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('label', 'Ti.UI.Label', {
+  textProperty: 'text',
   factory: props => Ti.UI.createLabel(props)
 });

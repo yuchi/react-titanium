@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('switch', 'Ti.UI.Switch', {
+  textProperty: undefined,
   factory: props => Ti.UI.createSwitch(props)
 });

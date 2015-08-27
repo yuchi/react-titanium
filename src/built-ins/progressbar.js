@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('progressbar', 'Ti.UI.ProgressBar', {
+  textProperty: undefined,
   factory: props => Ti.UI.createProgressBar(props)
 });

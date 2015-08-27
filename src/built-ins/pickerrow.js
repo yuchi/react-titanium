@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('pickerrow', 'Ti.UI.PickerRow', {
+  textProperty: undefined,
   factory: props => Ti.UI.createPickerRow(props)
 });

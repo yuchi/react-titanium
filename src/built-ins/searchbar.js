@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('searchbar', 'Ti.UI.SearchBar', {
+  textProperty: undefined,
   factory: props => Ti.UI.createSearchBar(props)
 });

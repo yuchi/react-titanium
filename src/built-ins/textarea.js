@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('textarea', 'Ti.UI.TextArea', {
+  textProperty: undefined,
   factory: props => Ti.UI.createTextArea(props)
 });

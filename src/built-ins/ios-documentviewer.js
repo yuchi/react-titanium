@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('ios-documentviewer', 'Ti.UI.iOS.DocumentViewer', {
+  textProperty: undefined,
   factory: props => Ti.UI.iOS.createDocumentViewer(props)
 });

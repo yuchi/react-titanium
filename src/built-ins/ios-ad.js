@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('ios-ad', 'Ti.UI.iOS.AdView', {
+  textProperty: undefined,
   factory: props => Ti.UI.iOS.createAdView(props)
 });

@@ -3,5 +3,6 @@
 import { register } from '../ReactTitaniumBridge';
 
 register('ios-coverflow', 'Ti.UI.iOS.CoverFlowView', {
+  textProperty: undefined,
   factory: props => Ti.UI.iOS.createCoverFlowView(props)
 });
