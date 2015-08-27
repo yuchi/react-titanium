@@ -1,6 +1,6 @@
 {
   "name": "react-titanium",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "React custom renderer for Appcelerator® Titanium™ SDK",
   "author": "Pier Paolo Ramon <pierpaolo.ramon@smc.it>",
   "main": "index.js",
