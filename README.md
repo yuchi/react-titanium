@@ -5,6 +5,10 @@ react-titanium
   align="right" width="128" height="128"
   src="https://raw.githubusercontent.com/yuchi/react-titanium/master/logo.png">
 
+[![Dependencies](https://david-dm.org/yuchi/react-titanium/status.svg?style=flat-square)](https://david-dm.org/yuchi/react-titanium#info=dependencies)
+[![Dev Dependencies](https://david-dm.org/yuchi/react-titanium/dev-status.svg?style=flat-square)](https://david-dm.org/yuchi/react-titanium#info=devDependencies)
+[![Peer Dependencies](https://david-dm.org/yuchi/react-titanium/peer-status.svg?style=flat-square)](https://david-dm.org/yuchi/react-titanium#info=devDependencies)
+
 A React custom renderer for [Appcelerator®][appc] [Titanium™ SDK][tisdk].
 
 [appc]: https://www.appcelerator.com/
