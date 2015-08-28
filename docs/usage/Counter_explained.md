@@ -127,3 +127,7 @@ render(<App />);
 ```
 
 Not too much to say here. You just instantiate and render an `App` component.
+
+## What’s next
+
+If you’re curious about how it compares to other frameworks, head to the [comparison page](Counter_compared.md).
