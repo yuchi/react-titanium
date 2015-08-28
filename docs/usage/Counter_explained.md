@@ -1,4 +1,4 @@
-# Counter
+# Counter, explained
 
 This example is a little bit deeper. As we did [before](Hello_World_explained.md), let’s break the code apart.
 

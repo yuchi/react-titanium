@@ -25,7 +25,6 @@ var window = Titanium.UI.createWindow();
 var button = Titanium.UI.createButton({ title: 'Hello World' });
 
 window.add(button);
-
 window.open();
 ```
 
