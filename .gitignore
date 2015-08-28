@@ -1,5 +1,6 @@
 .DS_Store
 *.log
+_book
 node_modules
 /babel-plugin
 /lib
