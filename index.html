@@ -34,7 +34,7 @@
     <body>
         
         
-    <div class="book" data-level="0" data-basepath="." data-revision="Sun Aug 30 2015 16:26:42 GMT+0200 (CEST)">
+    <div class="book" data-level="0" data-basepath="." data-revision="Sun Aug 30 2015 16:37:56 GMT+0200 (CEST)">
     
 
 <div class="book-summary">
@@ -396,99 +396,17 @@
 <p>A React custom renderer for <a href="https://www.appcelerator.com/" target="_blank">Appcelerator&#xAE;</a> <a href="http://www.appcelerator.org/#titanium" target="_blank">Titanium&#x2122; SDK</a>.</p>
 <p>This renderer should currently be considered as experimental and subject to
 change since it works on a beta version of React (<code>0.14.0-beta3</code>).</p>
-<h2 id="installation">Installation</h2>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> Titanium_Workspace/MyApp
-
-<span class="hljs-comment"># Initialize a node package here</span>
-$ npm init
-
-<span class="hljs-comment"># Let you use transformers (such as Babel) and npm packages</span>
-$ npm install --save-dev titaniumifier
-$ node_modules/.bin/install-titaniumifier-plugin
-$ node_modules/.bin/install-titaniumifier-plugin --no-simulate
-
-<span class="hljs-comment"># React-titanium requires v0.14</span>
-$ npm install --save react@<span class="hljs-number">0.14</span>.<span class="hljs-number">0</span>-beta3 react-titanium
-<span class="hljs-comment"># Let&#x2019;s write in ES2015!</span>
-$ npm install --save-dev babelify babel-runtime
-</code></pre>
-<p>Edit your <em>package.json</em> file so it looks like this:</p>
-<pre><code class="lang-js">{
-  <span class="hljs-comment">// This is the starting point of our app</span>
-  <span class="hljs-string">&quot;main&quot;</span>: <span class="hljs-string">&quot;Resources/app.js&quot;</span>,
-
-  <span class="hljs-comment">// Hook Babel transformation into Titaniumifier</span>
-  <span class="hljs-string">&quot;titaniumifier&quot;</span>: {
-    <span class="hljs-string">&quot;transforms&quot;</span>: {
-      <span class="hljs-string">&quot;babelify&quot;</span>: {
-        <span class="hljs-string">&quot;stage&quot;</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-string">&quot;optional&quot;</span>: [ <span class="hljs-string">&quot;runtime&quot;</span> ],
-        <span class="hljs-string">&quot;plugins&quot;</span>: [ <span class="hljs-string">&quot;react-titanium/lib/babel-plugin:before&quot;</span> ]
-      }
-    }
-  }
-}
-</code></pre>
-<p>Test your installation:</p>
-<pre><code class="lang-bash">$ [appc] ti build --platform ios
-</code></pre>
-<h2 id="example">Example</h2>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<h2 id="-installation-inst"><a href="http://yuchi.github.io/react-titanium/docs/Installation.html" target="_blank">Installation</a></h2>
+<p>There&#x2019;s a <a href="http://yuchi.github.io/react-titanium/docs/Installation.html" target="_blank">step-by-step guide</a> on the website.</p>
+<p>The gist of it is that once you have a titaniumified app you install it through</p>
+<pre><code>npm install --save react@0.14.0-beta3
+npm install --save react-titanium
+</code></pre><p>and you use it with</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
 <span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-titanium&apos;</span>;
-
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  state = { counter: <span class="hljs-number">0</span> };
-
-  increment = () =&gt; <span class="hljs-keyword">this</span>.setState({
-    counter: <span class="hljs-keyword">this</span>.state.counter + <span class="hljs-number">1</span>
-  });
-
-  open = <span class="hljs-built_in">window</span> =&gt; {
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.opened || !<span class="hljs-built_in">window</span>) <span class="hljs-keyword">return</span>;
-
-    <span class="hljs-keyword">this</span>.opened = <span class="hljs-literal">true</span>;
-    <span class="hljs-built_in">window</span>.open();
-  }
-
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">window</span>
-        <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{</span> <span class="hljs-attribute">this.increment</span> }
-        <span class="hljs-attribute">ref</span>=<span class="hljs-value">{</span> <span class="hljs-attribute">this.open</span> }
-      &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">color</span>=<span class="hljs-value">&quot;#09f&quot;</span>&gt;</span>
-          We got to: { this.state.counter }
-        <span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-title">window</span>&gt;</span>
-    )</span>;
-  }
-}
-
-render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">App</span> /&gt;</span>)</span>;
 </code></pre>
-<h2 id="building-and-development">Building and Development</h2>
-<h3 id="setup">Setup</h3>
-<pre><code class="lang-bash">$ git <span class="hljs-built_in">clone</span> git@github.com:yuchi/react-titanium.git
-$ <span class="hljs-built_in">cd</span> react-titanium
-$ npm install
-</code></pre>
-<h3 id="compiling-es2015-to-es5">Compiling (ES2015 to ES5)</h3>
-<pre><code class="lang-bash">$ npm run compile
-</code></pre>
-<h3 id="testing-temporary-solution">Testing (temporary solution)</h3>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> Titanium_Workspace
-$ titanium create <span class="hljs-comment"># Follow the instructions to create an app</span>
-$ <span class="hljs-built_in">cd</span> MyApp
-$ npm init
-$ npm install --save-dev titaniumifier
-$ node_modules/.bin/install-titaniumifier-plugin
-$ node_modules/.bin/install-titaniumifier-plugin --no-simulate
-$ npm install --save-dev babelify babel-runtime <span class="hljs-comment"># Edit the package.json!!</span>
-$ npm install --save react@<span class="hljs-number">0.14</span>.<span class="hljs-number">0</span>-beta3
-$ ln <span class="hljs-operator">-s</span> /path/to/my/react-titanium node_modules/react-titanium
-<span class="hljs-comment"># Then compile and...</span>
-$ titanium build --platform ios <span class="hljs-comment"># ...have fun!</span>
-</code></pre>
+<h2 id="examples">Examples</h2>
+<p>There&#x2019;s a simple <a href="http://yuchi.github.io/react-titanium/docs/examples/hello_world/index.html" target="_blank">&#x201C;Hello World&#x201D; example</a> that shows the minimal usage and a more complete <a href="http://yuchi.github.io/react-titanium/docs/examples/counter/index.html" target="_blank">&#x201C;Counter&#x201D; example</a> on the website.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>
 <p>I was finally able to grok how to implement a custom renderer thanks to
 <a href="https://github.com/Yomguithereal" target="_blank">Yomguithereal</a>&#x2019;s fantastic <a href="https://github.com/Yomguithereal/react-blessed" target="_blank"><code>react-blessed</code></a>.</p>
