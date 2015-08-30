@@ -10,11 +10,43 @@ This is indeed how we test *react-titanium*, and this documentation will also gu
 [host-mode]: https://github.com/smclab/titaniumifier/wiki/Host-mode
 
 
+## Setup Titanium™ SDK
+
+> Note: if you Appcelerator® Studio or Titanium™ SDK already set up you can skip this section.
+
+To install all the necessary tools you should read the [guide provided by Appcelerator](http://docs.appcelerator.com/platform/latest/#!/guide/Installation_and_Configuration).
+
+**If you have any issue there’s a great [Slack community (called `ti-slack`)][ti-slack] and you can [signup here][ti-slack-signup].**
+
+A fast overview that covers the installation of the completely OSS version of the tooling is the following:
+
+1. Install [**Node.js**](https://nodejs.org/)
+
+2. Install the native platform SDKs, Appcelerator has guides for [Android][Android], [iOS][iOS] and [Windows Phone][Windows Phone]
+
+3. Install the Titanium™ CLI
+
+       [sudo] npm install --global titanium tisdk
+
+4. Install the latest stable Titanium™ SDK
+
+       titanium sdk install --default
+
+5. Setup the environment
+
+       titanium setup
+
+
+[Android]: http://docs.appcelerator.com/platform/latest/#!/guide/Installing_the_Android_SDK
+[iOS]: http://docs.appcelerator.com/platform/latest/#!/guide/Installing_the_iOS_SDK
+[Windows Phone]: http://docs.appcelerator.com/platform/latest/#!/guide/Installing_the_Windows_Phone_SDK
+
+[ti-slack]: https://ti-slack.slack.com
+[ti-slack-signup]: http://topener.nl/tislack/
+
 ## Create your app project
 
 We suggest you to start with a new app project, and once accustomed to both *titaniumifier* and *react-titanium* migrate your Classic or Alloy projects.
-
-If this is your first time working with Titanium™ SDK, head over [Appcelerator website](http://www.appcelerator.com/) and setup your environment.
 
 You can use Appcelerator Studio, or if you love the terminal as we do then execute the following commands:
 
