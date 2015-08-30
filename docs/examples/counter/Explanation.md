@@ -1,6 +1,6 @@
 # Counter, explained
 
-This example is a little bit deeper. As we did [before](Hello_World_explained.md), let’s break the code apart.
+This example is a little bit deeper. As we did [before](../hello_world/Explanation.md), let’s break the code apart.
 
 #### 1. imports
 
@@ -130,4 +130,4 @@ Not too much to say here. You just instantiate and render an `App` component.
 
 ## What’s next
 
-If you’re curious about how it compares to other frameworks, head to the [comparison page](Counter_compared.md).
+If you’re curious about how it compares to other frameworks, head to the [comparison page](Comparison.md).

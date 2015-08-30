@@ -60,4 +60,4 @@ which is strikingly similar!
 
 The huge difference is that in Alloy the XML represents the **initial state of the interface**. We’ll see in the next examples how that is not true for React.
 
-For the moment let’s call it a draw, and move to the [next example](Counter.md)!
+For the moment let’s call it a draw, and move to the [next example](../counter/README.md)!

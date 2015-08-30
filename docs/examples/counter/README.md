@@ -75,10 +75,10 @@ And on Android with:
 
 And you should get something along the lines of this screenshot:
 
-![Our first Hello World!](../images/counter_1.png)
+![Our first Hello World!](../../images/counter_1.png)
 
 ## Next steps
 
-If you to better understand what happened, head to the [explanation](Counter_explained.md).
+If you to better understand what happened, head to the [explanation](Explanation.md).
 
-If you want to see how it compares to other frameworks, there’s a [comparison page](Counter_compared.md).
+If you want to see how it compares to other frameworks, there’s a [comparison page](Comparison.md).

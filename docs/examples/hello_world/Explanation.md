@@ -70,4 +70,4 @@ This in turn is an actual `Titanium.UI.Window`, and of course has all the method
 
 ## What’s next
 
-If you’re curious about how it compares to other frameworks, head to the [comparison page](Hello_World_compared.md).
+If you’re curious about how it compares to other frameworks, head to the [comparison page](comparison.md).

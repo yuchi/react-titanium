@@ -5,9 +5,11 @@
   "author": "Pier Paolo Ramon <pierpaolo.ramon@smc.it>",
   "main": "index.js",
   "scripts": {
-    "compile": "node_modules/.bin/babel src --out-dir lib",
-    "generate-built-ins": "node_modules/.bin/babel-node scripts/generate-built-ins",
+    "compile": "$(npm bin)/babel src --out-dir lib",
+    "generate-built-ins": "$(npm bin)/babel-node scripts/generate-built-ins",
     "prepublish": "npm run generate-built-ins && npm run compile",
+    "docs:serve": "$(npm bin)/gitbook serve",
+    "docs:publish": "$(npm bin)/gitbook build && $(npm bin)/gh-pages -d _book",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -26,6 +28,8 @@
     "babel": "^5.8.20",
     "babel-runtime": "^5.8.20",
     "chalk": "^1.1.0",
+    "gh-pages": "^0.3.1",
+    "gitbook-cli": "^0.3.4",
     "map-stream": "0.0.6"
   },
   "peerDependencies": {
