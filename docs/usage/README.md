@@ -6,6 +6,9 @@ Now you can follow this guide to build an app with React on top of Titanium™ S
 
 This guide is mostly ok for both React and Titanium™ beginners.
 
-* [Hello World](Hello_World.md)
-* [Hello World, explained](Hello_World_explained.md)
-* [Hello World, compared](Hello_World_compared.md)
+* [Hello World example](Hello_World.md)
+  * with [a step-by-step explanation](Hello_World_explained.md)
+  * and [a comparison with other frameworks](Hello_World_compared.md)
+* [Counter example](Counter.md)
+  * with [a step-by-step explanation](Counter_explained.md)
+  * and [a comparison with other frameworks](Counter_compared.md)

@@ -1,6 +1,5 @@
 # Table of Contents
 
-* [Read Me](/README.md)
 * [Motivation](/docs/Motivation.md)
 * [Installation](/docs/Installation.md)
 * [Usage](/docs/usage/README.md)
@@ -10,4 +9,9 @@
   * [Counter](/docs/usage/Counter.md)
     * [explained](/docs/usage/Counter_explained.md)
     * [compared](/docs/usage/Counter_compared.md)
+* [Components Reference](/docs/components/README.md)
+  * [Using native modules](/docs/components/Native_modules.md)
+  * [Top Level Views](/docs/components/Top_Level_Views.md)
+  * [List Views](/docs/components/List_Views.md)
+  * [Table Views](/docs/components/Table_Views.md)
 * [Glossary](/docs/Glossary.md)
