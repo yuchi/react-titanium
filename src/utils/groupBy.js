@@ -1,5 +1,5 @@
 
-export default function groupBy(array, fn) {
+export default function groupBy(array, fn, memo = {}) {
   return array.reduce((memo, item, index) => {
     const group = fn(item, index);
 
@@ -7,5 +7,5 @@ export default function groupBy(array, fn) {
     else memo[group] = [item];
 
     return memo;
-  }, {});
+  }, memo);
 }
