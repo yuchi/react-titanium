@@ -1,6 +1,6 @@
 # Hello World
 
-Our initial goal is to open a window and show the tipical “Hello World” message.
+Our initial goal is to open a window and show the typical “Hello World” message.
 
 The simplest one is the following:
 
