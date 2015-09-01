@@ -74,6 +74,8 @@ type ElementImpl = {
   - **`handlers : any`** an object in the form `{ "click": onClick }`
   - **`getChildren : () -> [NativeView]`** a function you can call to get the children of this view as specified by the user.
   - **must return** a rendered `NativeView`
+- **`update`** ___TODO___
+- **`updateContext`** ___TODO___
 
 ## Recipes
 
@@ -87,4 +89,20 @@ The first thing to do is to understand what kind of custom view your module impl
 
 ### Simple Views
 
-[Ti.SvgView](http://gitt.io/component/com.geraudbourdin.svgview)
+___TODO:___ Place an example that uses [Ti.SvgView](http://gitt.io/component/com.geraudbourdin.svgview).
+
+### Simple Container Views
+
+___TODO___
+
+### Top-level Views
+
+___TODO___
+
+### Top-level Container Views
+
+___TODO___
+
+### Complex Views
+
+___TODO:___ Place an example of implementation for Marcel Pociot’s CollectionView.
