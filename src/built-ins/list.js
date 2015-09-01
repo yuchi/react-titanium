@@ -10,8 +10,8 @@ register('list', 'Ti.UI.ListView', {
   create(props, handlers, getChildren) {
     const children = getChildren();
 
-    const { sections, templates, others } = groupBy(children, child =>
-      (child.type === 'template') ? 'templates' :
+    const { sections, templateObjs, others } = groupBy(children, child =>
+      (child.type === 'template') ? 'templateObjs' :
       (child.apiName === 'Ti.UI.ListSection') ? 'sections' :
       'others');
 
@@ -20,14 +20,28 @@ register('list', 'Ti.UI.ListView', {
       "Only <listsection>s and <template>s can be children of a <list>"
     );
 
+    // templates passed as child elements overwrite those passed as props
+    const templates = indexBy(
+      templateObjs,
+      template => template.properties.name,
+      props.templates
+    );
+
+    let defaultItemTemplate = props.defaultItemTemplate;
+
+    if (templates && defaultItemTemplate == null) {
+      for (let name in templates) {
+        if (templates[name].properties.default) {
+          defaultItemTemplate = name;
+        }
+      }
+    }
+
     const view = this.factory({
       ...props,
       sections,
-      templates: {
-        // templates passed as child elements overwrite those passed as props
-        ...props.templates,
-        ...indexBy(templates, template => template.properties.name)
-      }
+      templates,
+      defaultItemTemplate
     });
 
     attachListeners(view, handlers);
