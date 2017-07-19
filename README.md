@@ -1,3 +1,5 @@
+> :warning: ***Maintainer wanted!*** [Create an issue](https://github.com/yuchi/react-titanium/issues/new) if you want to maintain it!
+
 react-titanium
 ==============
 
